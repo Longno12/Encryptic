@@ -7,56 +7,64 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
         /* Custom CSS styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #111827;
+            color: #D1D5DB;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
         .feature-heading {
             text-align: center;
             font-size: 24px;
             font-weight: bold;
             margin-bottom: 20px;
+            cursor: pointer;
         }
         .feature-box {
             padding: 20px;
-            background-color: #4A5568;
-            border-radius: 20px;
+            background-color: #374151;
+            border-radius: 10px;
             margin-bottom: 10px;
-            display: inline-block;
             transition: transform 0.3s ease;
+            cursor: pointer;
         }
         .feature-box:hover {
             transform: translateY(-5px);
         }
         .collapsible {
-            cursor: pointer;
-            user-select: none;
             border: none;
             outline: none;
             text-align: left;
-            background-color: #4A5568;
-            color: white;
+            background-color: #374151;
+            color: #D1D5DB;
             padding: 18px;
             width: 100%;
             transition: 0.4s;
             border-radius: 10px;
             margin-bottom: 10px;
+            cursor: pointer;
         }
-
+        .collapsible:hover {
+            background-color: #4B5563;
+        }
         .active, .collapsible:hover {
-            background-color: #2D3748;
+            background-color: #1F2937;
         }
-
         .content {
             padding: 0 18px;
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.2s ease-out;
-            background-color: #2D3748;
+            background-color: #1F2937;
             border-radius: 0 0 10px 10px;
         }
-
         .active-content {
             max-height: 1500px;
         }
-
-        /* Download button styles */
         .download-button {
             background-color: #4A5568;
             color: white;
@@ -66,29 +74,30 @@
             margin-left: 10px;
             transition: background-color 0.3s ease;
         }
-
         .download-button:hover {
             background-color: #2D3748;
         }
     </style>
 </head>
-<body class="bg-gradient-to-r from-purple-800 via-zinc-900 to-black text-white min-h-screen">
-    <nav class="flex justify-between items-center p-6">
-        <div>
-            <img src="https://cdn.discordapp.com/attachments/1240514806759292948/1241181038512967700/OIG1-removebg-preview.png?ex=666a38eb&is=6668e76b&hm=8ab876f5faaffac110f4a04de24d5a4c9b4fede3cbcd93ddc220ca986814545d&" alt="Project Encryptic Logo" class="h-16 w-16" />
+<body>
+    <nav class="bg-gradient-to-r from-purple-800 via-zinc-900 to-black text-white p-6">
+        <div class="flex justify-between items-center">
+            <div>
+                <img src="https://cdn.discordapp.com/attachments/1240514806759292948/1241181038512967700/OIG1-removebg-preview.png?ex=666a38eb&is=6668e76b&hm=8ab876f5faaffac110f4a04de24d5a4c9b4fede3cbcd93ddc220ca986814545d&" alt="Project Encryptic Logo" class="h-16 w-16" />
+            </div>
+            <ul class="flex space-x-6">
+                <li><a href="index.html" class="hover:text-zinc-400">HOME</a></li>
+                <li><a href="about.html" class="hover:text-zinc-400">ABOUT</a></li>
+                <li><a href="features.html" class="hover:text-zinc-400">FEATURES</a></li>
+                <li><a href="contact.html" class="hover:text-zinc-400">CONTACT</a></li>
+                <li><a href="download.html" class="download-button">DOWNLOAD</a></li>
+            </ul>
         </div>
-        <ul class="flex space-x-6">
-            <li><a href="index.html" class="hover:text-zinc-400">HOME</a></li>
-            <li><a href="about.html" class="hover:text-zinc-400">ABOUT</a></li>
-            <li><a href="features.html" class="hover:text-zinc-400">FEATURES</a></li>
-            <li><a href="contact.html" class="hover:text-zinc-400">CONTACT</a></li>
-            <li><a href="download.html" class="download-button">DOWNLOAD</a></li>
-        </ul>
     </nav>
-    <div class="text-center mt-20">
-        <h1 class="text-5xl font-bold mb-8">Features List</h1>
-        
-        <!-- Settings -->
+    <div class="container mt-20">
+        <h1 class="text-5xl font-bold mb-8 text-center">Features List</h1>
+
+        <!-- Features -->
         <div class="feature-heading">
             <button class="collapsible">Settings</button>
             <div class="content">
@@ -107,15 +116,12 @@
                 <p>Change Platform Material to Robux</p>
             </div>
         </div>
-        
 
-        <!-- Room -->
         <div class="feature-heading">
             <button class="collapsible">Room</button>
             <div class="content">
                 <p>Launch Rocket</p>
                 <p>Change Day Of Time</p>
-                <!-- Add more room-related features as needed -->
                 <p>Disconnect</p>
                 <p>Disconnect On X</p>
                 <p>Disconnect On RG</p>
@@ -135,16 +141,10 @@
                 <p>Clear All Notis {USE}</p>
             </div>
         </div>
-        
 
-        <!-- Movement -->
         <div class="feature-heading">
             <button class="collapsible">Movement</button>
             <div class="content">
-                <p>Upside Down Head</p>
-                <p>Backwards Head</p>
-                <p>Twisted Head</p>
-                <!-- Add more movement-related features as needed -->
                 <p>Customize Platforms</p>
                 <p>Platforms</p>
                 <p>NoClip</p>
@@ -195,7 +195,6 @@
             </div>
         </div>
 
-        <!-- Fun -->
         <div class="feature-heading">
             <button class="collapsible">Fun</button>
             <div class="content">
@@ -294,7 +293,6 @@
                 <p>Give SnowBall Spam Gun</p>
             </div>
         </div>
-        
 
         <div class="feature-heading">
             <button class="collapsible">Spazz Mods</button>
@@ -351,7 +349,7 @@
                 <p>Flip Hands</p>
             </div>
         </div>
-        
+
         <div class="feature-heading">
             <button class="collapsible">Safety</button>
             <div class="content">
@@ -365,7 +363,7 @@
                 <p>Low Quality Microphone</p>
             </div>
         </div>
-        
+
         <div class="feature-heading">
             <button class="collapsible">Visual</button>
             <div class="content">
@@ -478,9 +476,9 @@
             </div>
         </div>
 
-        <button class="collapsible">BUG Mods</button>
-        <div class="content">
-            <div class="feature-box">
+        <div class="feature-heading">
+            <button class="collapsible">BUG Mods</button>
+            <div class="content">
                 <p>Grab Bug R</p>
                 <p>Grab Bug L</p>
                 <p>Grab Bat R</p>
@@ -519,26 +517,28 @@
 <p>Halo Bat</p>
 <p>Halo Bug</p>
 <p>Halo Monsters</p>
-<!-- Add more bug mods as needed -->
-</div>
-</div>
+            </div>
+        </div>
 
-<script>
-    var coll = document.getElementsByClassName("collapsible");
-    var i;
+    </div>
 
-    for (i = 0; i < coll.length; i++) {
-        coll[i].addEventListener("click", function() {
-            this.classList.toggle("active");
-            var content = this.nextElementSibling;
-            if (content.style.maxHeight){
-                content.style.maxHeight = null;
-            } else {
-                content.style.maxHeight = content.scrollHeight + "px";
-            } 
-        });
-    }
-</script>
-</div>
+    <script>
+        // JavaScript for collapsible content
+        const coll = document.getElementsByClassName("collapsible");
+        let i;
+        
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                const content = this.nextElementSibling;
+                if (content.style.maxHeight){
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                } 
+            });
+        }
+    </script>
 </body>
 </html>
+

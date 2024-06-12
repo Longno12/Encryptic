@@ -5,20 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Encryptic</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        /* Add custom styles for the Download button */
-        .download-button {
-            background-color: #4B5563; /* Tailwind color */
-            color: white;
-            padding: 8px 16px;
-            border-radius: 4px;
-            transition: background-color 0.3s ease;
-        }
-
-        .download-button:hover {
-            background-color: #2D3748; /* Darken the background color on hover */
-        }
-    </style>
 </head>
 <body class="bg-gradient-to-r from-purple-800 via-zinc-900 to-black text-white min-h-screen">
     <nav class="flex justify-between items-center p-6">
@@ -32,7 +18,7 @@
             <li><a href="contact.html" class="hover:text-zinc-400">CONTACT</a></li>
             <!-- Add Download Button -->
             <li>
-                <a href="download.html" class="download-button">Download</a>
+                <a href="download.html" class="bg-gray-800 hover:bg-gray-700 text-white py-2 px-4 rounded">Download</a>
             </li>
             <!-- End Download Button -->
         </ul>
@@ -49,20 +35,14 @@
         >
             Visit About to learn More!
         </a>
-        <div class="mt-8 hidden">
-            <button
-                onclick="window.location.href='https://discord.gg/rHAraREyCr'"
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-4"
-            >
-                Discord
-            </button>
-            <button
-                onclick="window.location.href='https://www.youtube.com/channel/UCWP4MvMM8lPpZecj4soVn2Q'"
-                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-            >
-                YouTube
-            </button>
-        </div>
+        <!-- Style Discord button -->
+        <button
+            onclick="window.location.href='https://discord.gg/rHAraREyCr'"
+            class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-full mt-8 transition duration-300 ease-in-out shadow-md"
+        >
+            Join our Discord
+        </button>
+        <!-- End of Discord Button -->
     </div>
     <script src="js script.js"></script>
 </body>
