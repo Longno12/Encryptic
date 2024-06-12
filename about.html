@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Project Encryptic</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .nav-link {
+            display: inline-block;
+            margin-right: 20px;
+        }
+        .download-button {
+            display: inline-block;
+            margin-right: 20px;
+            background-color: #ffffff;
+            color: #000000;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .download-button:hover {
+            background-color: #cccccc;
+        }
+        .slideshow-container {
+            position: relative;
+            max-width: 1000px;
+            margin: auto;
+        }
+        .slide {
+            display: none;
+        }
+        .active-slide {
+            display: block;
+        }
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .text {
+            color: #f2f2f2;
+            font-size: 15px;
+            padding: 8px 12px;
+            position: absolute;
+            bottom: 8px;
+            width: 100%;
+            text-align: center;
+        }
+        .picture-box {
+            width: 300px;
+            border: 2px solid #ffffff;
+            margin: 20px auto;
+            padding: 10px;
+            text-align: center;
+        }
+        .picture-box img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-r from-purple-800 via-zinc-900 to-black text-white min-h-screen">
+    <nav class="flex justify-between items-center p-6">
+        <div>
+            <img src="https://cdn.discordapp.com/attachments/1240514806759292948/1241181038512967700/OIG1-removebg-preview.png?ex=666a38eb&is=6668e76b&hm=8ab876f5faaffac110f4a04de24d5a4c9b4fede3cbcd93ddc220ca986814545d&" alt="Project Encryptic Logo" class="h-16 w-16" />
+        </div>
+        <ul class="flex space-x-6">
+            <li class="nav-link"><a href="site.html" class="hover:text-zinc-400">HOME</a></li>
+            <li class="nav-link"><a href="about.html" class="hover:text-zinc-400">ABOUT</a></li>
+            <li class="nav-link"><a href="features.html" class="hover:text-zinc-400">FEATURES</a></li>
+            <li class="nav-link"><a href="contact.html" class="hover:text-zinc-400">CONTACT</a></li>
+            <!-- Download Button -->
+            <li><a href="download.html" class="download-button">Download</a></li>
+        </ul>
+    </nav>
+    <div class="text-center mt-20">
+        <h1 class="text-5xl font-bold mb-8">Read About the Menu</h1>
+        <div class="slideshow-container">
+            <!-- Your slides and controls here -->
+        </div>
+    </div>
+    
+    <!-- Picture Boxes -->
+    <div class="flex justify-center">
+        <div class="picture-box">
+            <img src="https://cdn.discordapp.com/attachments/1240514806759292948/1250300044951945216/NnDWFeE-Xe0-HD.jpg?ex=666a7028&is=66691ea8&hm=b77383ab441f1804064bc9fd46f9bf1c3d5c76a47753b5af82c0158d877f3e5c&" alt="Why Free">
+            <h2 class="text-xl font-bold mb-2">Why Free?</h2>
+            <a href="#" class="click-me">Click Me</a>
+            <p class="hidden">Experience the freedom of customization without any cost; because at Project Encryptic, we believe in democratizing access to gaming enhancements for all.</p>
+        </div>        
+        <div class="picture-box">
+            <img src="https://cdn.discordapp.com/attachments/1240514806759292948/1250301563919138877/Screenshot_2024-06-12_051132.png?ex=666a7192&is=66692012&hm=649d163d53d41cd8998a68f86311107f78eacdf8918b5d86f94e6910d82ddc08&" alt="Why Choose">
+            <h2 class="text-xl font-bold mb-2">Why Choose This Free Menu?</h2>
+            <a href="#" class="click-me">Click Me</a>
+            <p class="hidden">Choose our free menu for its comprehensive features and seamless integration, enhancing your gaming experience without any cost.</p>
+        </div>
+        <div class="picture-box">
+            <img src="https://cdn.discordapp.com/attachments/1240514806759292948/1250301880400347187/zF8YzUHjhSk-HD.jpg?ex=666a71dd&is=6669205d&hm=a737342fbc01b8ed127cbb2c64d1a87072af096a928912eb823607b1f1290fe8&" alt="Player Benefits">
+            <h2 class="text-xl font-bold mb-2">Your Choice</h2>
+            <a href="#" class="click-me">Click Me</a>
+            <p class="hidden">Users benefit from a menu with 300+ mods by enjoying an extensive range of gameplay enhancements, allowing for personalized experiences and continuous engagement.</p>
+        </div>
+    </div>
+    <script>
+        // Add event listener to the HOME link to redirect to site.html
+        document.querySelector('nav ul li:first-child a').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent the default link behavior
+            window.location.href = 'site.html'; // Redirect to site.html
+        });
+        
+        // Add event listeners to "Click Me" links to toggle visibility of text
+        const clickMeLinks = document.querySelectorAll('.click-me');
+        clickMeLinks.forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                const text = this.nextElementSibling;
+                const allText = document.querySelectorAll('.text'); // Select all text elements
+                allText.forEach(t => {
+                    if (t !== text) { // Hide all text elements except the clicked one
+                        t.classList.add('hidden');
+                    }
+                });
+                text.classList.toggle('hidden'); // Toggle visibility of clicked text
+            });
+        });
+    </script>
+</body>
+</html>
