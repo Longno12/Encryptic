@@ -76,16 +76,6 @@
             100% { opacity: 0; }
         }
     </style>
-    <script>
-        function showBubble(event) {
-            event.preventDefault();
-            var bubble = document.getElementById('bubble');
-            bubble.style.display = 'block';
-            setTimeout(function() {
-                bubble.style.display = 'none';
-            }, 4000);
-        }
-    </script>
 </head>
 <body class="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-purple-600 to-black text-white dark:bg-zinc-800">
     <nav class="absolute top-0 right-0 p-6">
@@ -102,8 +92,7 @@
         <p class="text-lg md:text-xl mb-8 text-center">
             Click the download button below to get the latest version.
         </p>
-        <a href="#" onclick="showBubble(event)" class="botao" aria-label="Download">Download Now</a>
+        <a href="https://github.com/Longno12/MenuDownload/releases/download/game/Project.Encryptic.V10.dll" class="botao" aria-label="Download">Download Now</a>
     </div>
-    <div id="bubble" class="bubble">Releasing later</div>
 </body>
 </html>
