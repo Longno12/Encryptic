@@ -76,6 +76,12 @@
             100% { opacity: 0; }
         }
     </style>
+    <script>
+        function showMessage() {
+            var bubble = document.getElementById('messageBubble');
+            bubble.style.display = 'block';
+        }
+    </script>
 </head>
 <body class="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-purple-600 to-black text-white dark:bg-zinc-800">
     <nav class="absolute top-0 right-0 p-6">
@@ -92,7 +98,8 @@
         <p class="text-lg md:text-xl mb-8 text-center">
             Click the download button below to get the latest version.
         </p>
-        <a href="https://github.com/Longno12/MenuDownload/releases/download/game/Project.Encryptic.V12.dll" class="botao" aria-label="Download">Download Now</a>
+        <button onclick="showMessage()" class="botao" aria-label="Download">Download Now</button>
+        <div id="messageBubble" class="bubble">Menu is currently down due to some issues. Come back later.</div>
     </div>
 </body>
 </html>
