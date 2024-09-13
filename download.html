@@ -75,6 +75,11 @@
             90% { opacity: 1; }
             100% { opacity: 0; }
         }
+
+        /* Added styles for button click animation */
+        .bubble.show {
+            display: block;
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-purple-600 to-black text-white dark:bg-zinc-800">
@@ -92,7 +97,17 @@
         <p class="text-lg md:text-xl mb-8 text-center">
             Click the download button below to get the latest version.
         </p>
-        <a href="https://github.com/Longno12/MenuDownload/releases/download/game/Project.Encryptic.FIX.dll" class="botao" aria-label="Download">Download Now</a>
+        <a href="#" class="botao" id="downloadBtn">Download Now</a>
+        <div id="message" class="bubble">The menu is down at the moment. Please try again later!</div>
     </div>
+
+    <script>
+        document.getElementById('downloadBtn').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent the default action of the link
+            const message = document.getElementById('message');
+            message.classList.add('show'); // Show the message
+            setTimeout(() => message.classList.remove('show'), 4000); // Hide the message after 4 seconds
+        });
+    </script>
 </body>
 </html>
