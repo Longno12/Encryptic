@@ -3,110 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Encryptic Mod Download</title>
+    <title>Download - Project Encryptic</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        .botao {
-            width: 150px;
-            height: 50px;
-            border-radius: 25px;
-            border: none;
-            box-shadow: 1px 1px rgba(107, 221, 215, 0.37);
-            padding: 5px 10px;
-            background: rgb(47, 93, 197);
-            background: linear-gradient(160deg, rgba(47, 93, 197, 1) 0%, rgba(46, 86, 194, 1) 5%, rgba(47, 93, 197, 1) 11%, rgba(59, 190, 230, 1) 57%, rgba(0, 212, 255, 1) 71%);
-            color: #fff;
-            font-family: Roboto, sans-serif;
-            font-weight: 505;
-            font-size: 18px;
-            line-height: 1;
-            cursor: pointer;
-            filter: drop-shadow(0 0 10px rgba(59, 190, 230, 0.568));
-            transition: .5s linear;
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #0f0c29;
+            background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
+            background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
+        }
+        .orbitron {
+            font-family: 'Orbitron', sans-serif;
+        }
+        .glow {
+            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de, 0 0 35px #ff00de, 0 0 40px #ff00de, 0 0 50px #ff00de, 0 0 75px #ff00de;
+        }
+        .download-button {
+            background: linear-gradient(45deg, #ff00de, #00ff9d);
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
-
-        .botao::before {
+        .download-button::before {
             content: '';
             position: absolute;
             top: -50%;
             left: -50%;
             width: 200%;
             height: 200%;
-            border-radius: 50%;
-            border: 3.5px solid transparent;
-            border-top-color: #fff;
-            animation: animateC 2s linear infinite;
-            transition: width 0.5s, height 0.5s;
-            box-sizing: border-box;
+            background: rgba(255,255,255,0.1);
+            transform: rotate(45deg);
+            transition: all 0.3s ease;
         }
-
-        @keyframes animateC {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
+        .download-button:hover::before {
+            left: 100%;
         }
-
-        .bubble {
-            display: none;
-            position: fixed;
-            bottom: 50px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(255, 255, 255, 0.9);
-            color: black;
-            padding: 15px 30px;
-            border-radius: 25px;
-            font-family: Roboto, sans-serif;
-            font-size: 18px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-            animation: fadeInOut 4s forwards;
+        .message {
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform: translateY(20px);
         }
-
-        @keyframes fadeInOut {
-            0% { opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { opacity: 0; }
+        .message.show {
+            opacity: 1;
+            transform: translateY(0);
         }
-
-        /* Added styles for button click animation */
-        .bubble.show {
-            display: block;
+        .hexagon {
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-purple-600 to-black text-white dark:bg-zinc-800">
-    <nav class="absolute top-0 right-0 p-6">
-        <ul class="flex space-x-6">
-            <li><a href="index.html" class="hover:text-zinc-300 dark:hover:text-zinc-500">Home</a></li>
-            <li><a href="about.html" class="hover:text-zinc-300 dark:hover:text-zinc-500">About</a></li>
-            <li><a href="features.html" class="hover:text-zinc-300 dark:hover:text-zinc-500">Features</a></li>
-            <li><a href="contact.html" class="hover:text-zinc-300 dark:hover:text-zinc-500">Contact</a></li>
-        </ul>
+<body class="text-white min-h-screen flex flex-col">
+    <nav class="bg-black bg-opacity-50 backdrop-filter backdrop-blur-lg fixed w-full z-10">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="hexagon bg-purple-600 w-12 h-12 flex items-center justify-center mr-4">
+                    <span class="orbitron text-xl font-bold">PE</span>
+                </div>
+                <span class="orbitron text-xl font-semibold">Project Encryptic</span>
+            </div>
+            <ul class="hidden md:flex space-x-8">
+                <li><a href="index.html" class="hover:text-purple-400 transition duration-300">Home</a></li>
+                <li><a href="about.html" class="hover:text-purple-400 transition duration-300">About</a></li>
+                <li><a href="features.html" class="hover:text-purple-400 transition duration-300">Features</a></li>
+                <li><a href="contact.html" class="hover:text-purple-400 transition duration-300">Contact</a></li>
+                <li>
+                    <a href="download.html" class="bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded-full transition duration-300">Download</a>
+                </li>
+            </ul>
+            <button class="md:hidden text-white focus:outline-none">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
     </nav>
-    <div class="flex flex-col items-center">
-        <img src="https://cdn.discordapp.com/attachments/1240514806759292948/1241181038512967700/OIG1-removebg-preview.png?ex=666a38eb&is=6668e76b&hm=8ab876f5faaffac110f4a04de24d5a4c9b4fede3cbcd93ddc220ca986814545d&" alt="Logo" class="mb-8 rounded-full shadow-lg" />
-        <h1 class="text-4xl md:text-6xl font-bold mb-4 text-center">Project Encryptic Mod Download</h1>
-        <p class="text-lg md:text-xl mb-8 text-center">
-            Click the download button below to get the latest version.
-        </p>
-        <a href="https://github.com/Longno12/MenuDownload/releases/download/game/Project.Encryptic.dll" class="botao" id="downloadBtn" download="Project_Encryptic.dll">Download Now</a>
-        <div id="message" class="bubble">The menu is Downloading</div>
-    </div>
+
+    <main class="flex-grow flex items-center justify-center px-6 pt-20">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="mb-12 relative">
+                <div class="hexagon bg-purple-600 w-48 h-48 mx-auto flex items-center justify-center">
+                    <span class="orbitron text-6xl font-bold glow">PE</span>
+                </div>
+            </div>
+            <h1 class="orbitron text-5xl md:text-7xl font-bold mb-6 glow">Project Encryptic</h1>
+            <p class="text-xl mb-12 text-purple-200">
+                Unlock the full potential of your gaming experience with our cutting-edge mod menu.
+            </p>
+            <div class="space-y-8">
+                <a 
+                    href="https://github.com/Longno12/MenuDownload/releases/download/game/Project.Encryptic.dll" 
+                    class="download-button inline-block py-4 px-12 text-lg font-semibold text-white rounded-full shadow-lg transform hover:scale-105 transition duration-300"
+                    id="downloadBtn"
+                    download="Project_Encryptic.dll"
+                    aria-label="Download Project Encryptic"
+                >
+                    Download The Latest Version
+                </a>
+                <div id="message" class="message mt-8 text-lg font-medium text-purple-300" aria-live="polite">
+                    Prepare for an enhanced gaming experience...
+                </div>
+            </div>
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-purple-900 bg-opacity-50 p-6 rounded-lg">
+                    <h3 class="orbitron text-xl font-semibold mb-2">300+ Mods</h3>
+                    <p>Access a vast array of customization options to tailor your gameplay.</p>
+                </div>
+                <div class="bg-purple-900 bg-opacity-50 p-6 rounded-lg">
+                    <h3 class="orbitron text-xl font-semibold mb-2">Regular Updates</h3>
+                    <p>Stay ahead with frequent updates and new features.</p>
+                </div>
+                <div class="bg-purple-900 bg-opacity-50 p-6 rounded-lg">
+                    <h3 class="orbitron text-xl font-semibold mb-2">Community Support</h3>
+                    <p>Join our active community for tips, tricks, and assistance.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-black bg-opacity-50 py-6 mt-12">
+        <div class="container mx-auto px-6 text-center text-purple-300">
+            <p>&copy; 2024 Project Encryptic. Elevate Your Game.</p>
+        </div>
+    </footer>
 
     <script>
         document.getElementById('downloadBtn').addEventListener('click', function(event) {
-            // Optional: If you want to show a message even when the file is downloaded
             const message = document.getElementById('message');
-            message.classList.add('show'); // Show the message
-            setTimeout(() => message.classList.remove('show'), 4000); // Hide the message after 4 seconds
+            message.classList.add('show');
+            message.textContent = "Download initiated. Welcome to the next level of gaming!";
+            setTimeout(() => {
+                message.classList.remove('show');
+                setTimeout(() => {
+                    message.textContent = "Prepare for an enhanced gaming experience...";
+                }, 300);
+            }, 5000);
         });
     </script>
 </body>
