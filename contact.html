@@ -5,34 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - Project Encryptic</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Roboto', sans-serif;
+            background: #0f0c29;
+            background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
+            background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
         }
-        .social-button {
-            @apply w-16 h-16 flex items-center justify-center rounded-full transition-all duration-300 ease-in-out;
+        .orbitron {
+            font-family: 'Orbitron', sans-serif;
         }
-        .social-button:hover {
-            @apply transform scale-110;
+        .glow {
+            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de, 0 0 35px #ff00de, 0 0 40px #ff00de, 0 0 50px #ff00de, 0 0 75px #ff00de;
         }
-        .social-button svg {
-            @apply w-8 h-8;
+        .contact-button {
+            background: linear-gradient(45deg, #ff00de, #00ff9d);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
-        .discord-button {
-            @apply bg-[#7289da] text-white hover:bg-[#5b73c7];
+        .contact-button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255,255,255,0.1);
+            transform: rotate(45deg);
+            transition: all 0.3s ease;
         }
-        .youtube-button {
-            @apply bg-[#ff0000] text-white hover:bg-[#d90000];
+        .contact-button:hover::before {
+            left: 100%;
+        }
+        .hexagon {
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
         }
     </style>
 </head>
-<body class="bg-gradient-to-br from-purple-900 via-zinc-900 to-black text-white min-h-screen flex flex-col">
+<body class="text-white min-h-screen flex flex-col">
     <nav class="bg-black bg-opacity-50 backdrop-filter backdrop-blur-lg fixed w-full z-10">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
             <div class="flex items-center">
-                <img src="https://cdn.discordapp.com/attachments/1240514806759292948/1241181038512967700/OIG1-removebg-preview.png?ex=666a38eb&is=6668e76b&hm=8ab876f5faaffac110f4a04de24d5a4c9b4fede3cbcd93ddc220ca986814545d" alt="Project Encryptic Logo" class="h-12 w-12 mr-4 rounded-full" />
-                <span class="text-xl font-semibold">Project Encryptic</span>
+                <div class="hexagon bg-purple-600 w-12 h-12 flex items-center justify-center mr-4">
+                    <span class="orbitron text-xl font-bold">PE</span>
+                </div>
+                <span class="orbitron text-xl font-semibold">Project Encryptic</span>
             </div>
             <ul class="hidden md:flex space-x-8">
                 <li><a href="index.html" class="hover:text-purple-400 transition duration-300">Home</a></li>
@@ -51,48 +70,63 @@
         </div>
     </nav>
 
-    <main class="flex-grow container mx-auto px-6 pt-24 pb-12">
-        <h1 class="text-5xl font-bold mb-12 text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">Get in Touch</h1>
-        
-        <div class="max-w-2xl mx-auto bg-purple-800 bg-opacity-20 rounded-lg p-8 shadow-xl">
-            <p class="text-xl mb-8 text-center">
-                Have questions or want to connect with our community? Join our Discord or reach out on YouTube!
-            </p>
-            
-            <div class="flex flex-col md:flex-row justify-center items-center space-y-8 md:space-y-0 md:space-x-12 mb-12">
-                <div class="text-center">
-                    <a href="https://discord.gg/rHAraREyCr" class="social-button discord-button mb-4" aria-label="Join our Discord">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" fill="currentColor">
-                            <path d="M524.5 69.8a1.5 1.5 0 0 0 -.8-.7A485.1 485.1 0 0 0 404.1 32a1.8 1.8 0 0 0 -1.9 .9 337.5 337.5 0 0 0 -14.9 30.6 447.8 447.8 0 0 0 -134.4 0 309.5 309.5 0 0 0 -15.1-30.6 1.9 1.9 0 0 0 -1.9-.9A483.7 483.7 0 0 0 116.1 69.1a1.7 1.7 0 0 0 -.8 .7C39.1 183.7 18.2 294.7 28.4 404.4a2 2 0 0 0 .8 1.4A487.7 487.7 0 0 0 176 479.9a1.9 1.9 0 0 0 2.1-.7A348.2 348.2 0 0 0 208.1 430.4a1.9 1.9 0 0 0 -1-2.6 321.2 321.2 0 0 1 -45.9-21.9 1.9 1.9 0 0 1 -.2-3.1c3.1-2.3 6.2-4.7 9.1-7.1a1.8 1.8 0 0 1 1.9-.3c96.2 43.9 200.4 43.9 295.5 0a1.8 1.8 0 0 1 1.9 .2c2.9 2.4 6 4.9 9.1 7.2a1.9 1.9 0 0 1 -.2 3.1 301.4 301.4 0 0 1 -45.9 21.8 1.9 1.9 0 0 0 -1 2.6 391.1 391.1 0 0 0 30 48.8 1.9 1.9 0 0 0 2.1 .7A486 486 0 0 0 610.7 405.7a1.9 1.9 0 0 0 .8-1.4C623.7 277.6 590.9 167.5 524.5 69.8zM222.5 337.6c-29 0-52.8-26.6-52.8-59.2S193.1 219.1 222.5 219.1c29.7 0 53.3 26.8 52.8 59.2C275.3 311 251.9 337.6 222.5 337.6zm195.4 0c-29 0-52.8-26.6-52.8-59.2S388.4 219.1 417.9 219.1c29.7 0 53.3 26.8 52.8 59.2C470.7 311 447.5 337.6 417.9 337.6z"></path>
-                        </svg>
-                    </a>
-                    <h2 class="text-2xl font-bold mb-2">Join our Discord</h2>
-                    <p class="text-gray-300">Connect with our community, get support, and stay updated.</p>
-                </div>
-                <div class="text-center">
-                    <a href="https://www.youtube.com/channel/UCWP4MvMM8lPpZecj4soVn2Q" class="social-button youtube-button mb-4" aria-label="Visit our YouTube Channel">
-                        <svg viewBox="0 0 576 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M549.7 124.1c-6.3-23.7-24.8-42.3-48.3-48.6C458.8 64 288 64 288 64S117.2 64 74.6 75.5c-23.5 6.3-42 24.9-48.3 48.6-11.4 42.9-11.4 132.3-11.4 132.3s0 89.4 11.4 132.3c6.3 23.7 24.8 41.5 48.3 47.8C117.2 448 288 448 288 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zm-317.5 213.5V175.2l142.7 81.2-142.7 81.2z"></path>
-                        </svg>
-                    </a>
-                    <h2 class="text-2xl font-bold mb-2">Ask on YouTube</h2>
-                    <p class="text-gray-300">Watch our videos and leave your questions in the comments.</p>
+    <main class="flex-grow flex items-center justify-center px-6 pt-20">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="mb-12 relative">
+                <div class="hexagon bg-purple-600 w-48 h-48 mx-auto flex items-center justify-center">
+                    <span class="orbitron text-6xl font-bold glow">PE</span>
                 </div>
             </div>
-            
-            <div class="text-center">
-                <p class="mb-4 text-lg">Can't find what you're looking for?</p>
-                <a href="about.html" class="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-6 rounded-full transition duration-300">
-                    Learn More About Us
+            <h1 class="orbitron text-5xl md:text-7xl font-bold mb-6 glow">Get in Touch</h1>
+            <p class="text-xl mb-12 text-purple-200">
+                Join our community or reach out on YouTube for support, updates, and to connect with fellow gamers.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <div class="bg-purple-900 bg-opacity-50 p-8 rounded-lg">
+                    <h2 class="orbitron text-3xl font-bold mb-4">Join our Discord</h2>
+                    <p class="mb-6">Connect with our community, get support, and stay updated on the latest features.</p>
+                    <a 
+                        href="https://discord.gg/rHAraREyCr" 
+                        class="contact-button inline-block py-3 px-8 text-lg font-semibold text-white rounded-full shadow-lg transform hover:scale-105 transition duration-300"
+                        aria-label="Join our Discord server"
+                    >
+                        Join Discord
+                    </a>
+                </div>
+                <div class="bg-purple-900 bg-opacity-50 p-8 rounded-lg">
+                    <h2 class="orbitron text-3xl font-bold mb-4">Ask on YouTube</h2>
+                    <p class="mb-6">Watch our videos, leave comments, and get answers to your questions.</p>
+                    <a 
+                        href="https://www.youtube.com/channel/UCWP4MvMM8lPpZecj4soVn2Q" 
+                        class="contact-button inline-block py-3 px-8 text-lg font-semibold text-white rounded-full shadow-lg transform hover:scale-105 transition duration-300"
+                        aria-label="Visit our YouTube channel"
+                    >
+                        Visit YouTube
+                    </a>
+                </div>
+            </div>
+            <div class="bg-black bg-opacity-50 p-8 rounded-lg">
+                <h2 class="orbitron text-2xl font-bold mb-4">Can't find what you're looking for?</h2>
+                <p class="mb-6">Check out our About page for more information on Project Encryptic.</p>
+                <a 
+                    href="about.html" 
+                    class="contact-button inline-block py-3 px-8 text-lg font-semibold text-white rounded-full shadow-lg transform hover:scale-105 transition duration-300"
+                >
+                    Learn More
                 </a>
             </div>
         </div>
     </main>
 
-    <footer class="bg-black bg-opacity-50 py-6">
-        <div class="container mx-auto px-6 text-center text-gray-400">
-            <p>&copy; 2024 Project Encryptic. All rights reserved.</p>
-        </div>
-    </footer>
+    <footer class="bg-black bg-opacity-50 py-6 mt-12">
+        <div class="container mx-auto px-6 text-center text-purple-300">
+            <p>&copy; 2024 Project Encryptic. Connect and Elevate Your Experience.</p>
+        </footer>
+    </div>
+
+    <script>
+        // You can add any necessary JavaScript here
+    </script>
 </body>
 </html>
+
