@@ -5,22 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Encryptic</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Roboto', sans-serif;
+            background: #0f0c29;
+            background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
+            background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
+        }
+        .orbitron {
+            font-family: 'Orbitron', sans-serif;
+        }
+        .glow {
+            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de, 0 0 35px #ff00de, 0 0 40px #ff00de, 0 0 50px #ff00de, 0 0 75px #ff00de;
+        }
+        .action-button {
+            background: linear-gradient(45deg, #ff00de, #00ff9d);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .action-button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255,255,255,0.1);
+            transform: rotate(45deg);
+            transition: all 0.3s ease;
+        }
+        .action-button:hover::before {
+            left: 100%;
+        }
+        .hexagon {
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
         }
     </style>
 </head>
-<body class="bg-gradient-to-br from-purple-900 via-zinc-900 to-black text-white min-h-screen flex flex-col">
+<body class="text-white min-h-screen flex flex-col">
     <nav class="bg-black bg-opacity-50 backdrop-filter backdrop-blur-lg fixed w-full z-10">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
             <div class="flex items-center">
-                <img src="https://cdn.discordapp.com/attachments/1240514806759292948/1241181038512967700/OIG1-removebg-preview.png?ex=666a38eb&is=6668e76b&hm=8ab876f5faaffac110f4a04de24d5a4c9b4fede3cbcd93ddc220ca986814545d" alt="Project Encryptic Logo" class="h-12 w-12 mr-4" />
-                <span class="text-xl font-semibold">Project Encryptic</span>
+                <div class="hexagon bg-purple-600 w-12 h-12 flex items-center justify-center mr-4">
+                    <span class="orbitron text-xl font-bold">PE</span>
+                </div>
+                <span class="orbitron text-xl font-semibold">Project Encryptic</span>
             </div>
             <ul class="hidden md:flex space-x-8">
-                <li><a href="index.html" class="hover:text-purple-400 transition duration-300">Home</a></li>
+                <li><a href="index.html" class="text-purple-400 font-semibold">Home</a></li>
                 <li><a href="about.html" class="hover:text-purple-400 transition duration-300">About</a></li>
                 <li><a href="features.html" class="hover:text-purple-400 transition duration-300">Features</a></li>
                 <li><a href="contact.html" class="hover:text-purple-400 transition duration-300">Contact</a></li>
@@ -36,36 +70,52 @@
         </div>
     </nav>
 
-    <main class="flex-grow flex items-center justify-center px-6 mt-16">
-        <div class="text-center max-w-3xl mx-auto">
-            <h1 class="text-6xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">Project Encryptic</h1>
-            <p class="text-xl mb-12 text-gray-300">
-                Experience one of the best <span class="font-bold text-purple-400">FREE</span> Gorilla Tag mod menus available. Unlock new possibilities and enhance your gameplay.
+    <main class="flex-grow flex items-center justify-center px-6 pt-20">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="mb-12 relative">
+                <div class="hexagon bg-purple-600 w-48 h-48 mx-auto flex items-center justify-center">
+                    <span class="orbitron text-6xl font-bold glow">PE</span>
+                </div>
+            </div>
+            <h1 class="orbitron text-5xl md:text-7xl font-bold mb-6 glow">Project Encryptic</h1>
+            <p class="text-xl mb-12 text-purple-200">
+                Experience the ultimate <span class="font-bold">FREE</span> Gorilla Tag mod menu. Elevate your gameplay to new heights.
             </p>
-            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-                <a
-                    href="about.html"
-                    class="bg-white text-black py-3 px-8 rounded-full hover:bg-purple-100 transition duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+            <div class="space-y-8">
+                <a 
+                    href="about.html" 
+                    class="action-button inline-block py-4 px-12 text-lg font-semibold text-white rounded-full shadow-lg transform hover:scale-105 transition duration-300"
                 >
-                    Learn More
+                    Discover More
                 </a>
-                <a
-                    href="https://discord.gg/rHAraREyCr"
-                    class="bg-indigo-600 text-white py-3 px-8 rounded-full hover:bg-indigo-700 transition duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center"
+                <a 
+                    href="https://discord.gg/rHAraREyCr" 
+                    class="action-button inline-block py-4 px-12 text-lg font-semibold text-white rounded-full shadow-lg transform hover:scale-105 transition duration-300 ml-4"
                     aria-label="Join our Discord"
                 >
-                    <svg class="h-6 w-6 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
-                    </svg>
                     Join Discord
                 </a>
+            </div>
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-purple-900 bg-opacity-50 p-6 rounded-lg">
+                    <h3 class="orbitron text-xl font-semibold mb-2">Cutting-Edge Features</h3>
+                    <p>Access a vast array of mods and customizations to enhance your Gorilla Tag experience.</p>
+                </div>
+                <div class="bg-purple-900 bg-opacity-50 p-6 rounded-lg">
+                    <h3 class="orbitron text-xl font-semibold mb-2">Free</h3>
+                    <p>Enjoy premium features without any cost. Our commitment to the community keeps it free.</p>
+                </div>
+                <div class="bg-purple-900 bg-opacity-50 p-6 rounded-lg">
+                    <h3 class="orbitron text-xl font-semibold mb-2">Community</h3>
+                    <p>Join our Discord community for support, updates, and to connect with fellow modders.</p>
+                </div>
             </div>
         </div>
     </main>
 
-    <footer class="bg-black bg-opacity-50 py-6 mt-16">
-        <div class="container mx-auto px-6 text-center text-gray-400">
-            <p>&copy; 2024 Project Encryptic. All rights reserved.</p>
+    <footer class="bg-black bg-opacity-50 py-6 mt-12">
+        <div class="container mx-auto px-6 text-center text-purple-300">
+            <p>&copy; 2024 Project Encryptic. Elevate Your Gorilla Tag Experience.</p>
         </div>
     </footer>
 
