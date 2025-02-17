@@ -3,123 +3,437 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Encryptic</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Project Encryptic - Ultimate Gorilla Tag Mod Menu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #b388ff;
+            --primary-dark: #7c4dff;
+            --background: #0f0f1a;
+            --text: #ffffff;
+            --accent: #00ffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
+            background-color: var(--background);
+            color: var(--text);
             font-family: 'Roboto', sans-serif;
-            background: #0f0c29;
-            background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
-            background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
         }
-        .orbitron {
+
+        .container {
+            text-align: center;
+            z-index: 1;
+            padding: 2rem;
+            background: rgba(15, 15, 26, 0.8);
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(179, 136, 255, 0.3);
+            backdrop-filter: blur(10px);
+            max-width: 90%;
+            width: 800px;
+            margin: 2rem 0;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .logo {
+            width: 180px;
+            height: 180px;
+            margin-bottom: 2rem;
+            animation: float 3s ease-in-out infinite, rotate 20s linear infinite;
+        }
+
+        .logo:hover {
+            animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+            transform: translate3d(0, 0, 0);
+            backface-visibility: hidden;
+            perspective: 1000px;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-1px, 0, 0); }
+            20%, 80% { transform: translate3d(2px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+            40%, 60% { transform: translate3d(4px, 0, 0); }
+        }
+
+        h1, h2 {
             font-family: 'Orbitron', sans-serif;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
         }
-        .glow {
-            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de, 0 0 35px #ff00de, 0 0 40px #ff00de, 0 0 50px #ff00de, 0 0 75px #ff00de;
+
+        h1 { 
+            font-size: 3.5rem; 
+            overflow: hidden;
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end), colorShift 8s ease-in-out infinite;
         }
-        .action-button {
-            background: linear-gradient(45deg, #ff00de, #00ff9d);
+        h2 { font-size: 2rem; }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes colorShift {
+            0%, 100% { filter: hue-rotate(0deg); }
+            50% { filter: hue-rotate(30deg); }
+        }
+
+        p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 1.5rem;
+            line-height: 1.6;
+            color: #a0a0a0;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            animation: glowPulse 3s infinite;
         }
-        .action-button::before {
-            content: '';
+
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 5px var(--primary), 0 0 10px var(--primary); }
+            50% { box-shadow: 0 0 20px var(--primary), 0 0 30px var(--accent); }
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:active {
+            transform: translateY(-1px) scale(1.02);
+        }
+
+        .btn::before {
+            content: "";
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: rgba(255,255,255,0.1);
-            transform: rotate(45deg);
-            transition: all 0.3s ease;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
-        .action-button:hover::before {
-            left: 100%;
+
+        .btn:hover::before {
+            opacity: 1;
         }
-        .hexagon {
-            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+
+        .btn span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(-45deg, #1a1b26, #2f3147, #1a1b26, #3f4167);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            z-index: -2;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            perspective: 1000px;
+            transform-style: preserve-3d;
+        }
+
+        .star {
+            position: absolute;
+            background: #ffffff;
+            border-radius: 50%;
+            animation: twinkle var(--duration) linear infinite, parallax 5s ease-out infinite;
+            opacity: 0;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes parallax {
+            0% { transform: translateZ(0); }
+            50% { transform: translateZ(50px); }
+            100% { transform: translateZ(0); }
+        }
+
+        .about-section {
+            background: rgba(15, 15, 26, 0.9);
+            padding: 2rem;
+            border-radius: 20px;
+            margin-top: 2rem;
+            box-shadow: 0 0 20px rgba(179, 136, 255, 0.3);
+            animation: slideIn 1s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .feature-list {
+            text-align: left;
+            list-style-type: none;
+            padding-left: 1rem;
+        }
+
+        .feature-list li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+            opacity: 0;
+            animation: fadeInUp 0.5s ease-out forwards paused;
+        }
+
+        .feature-list li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .scroll-down {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--primary);
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+            40% { transform: translateY(-20px) translateX(-50%); }
+            60% { transform: translateY(-10px) translateX(-50%); }
+        }
+
+        @media (max-width: 768px) {
+            .container, .about-section {
+                padding: 1.5rem;
+            }
+
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 1.8rem; }
+
+            .logo {
+                width: 140px;
+                height: 140px;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            .buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 250px;
+            }
         }
     </style>
 </head>
-<body class="text-white min-h-screen flex flex-col">
-    <nav class="bg-black bg-opacity-50 backdrop-filter backdrop-blur-lg fixed w-full z-10">
-        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <div class="flex items-center">
-                <div class="hexagon bg-purple-600 w-12 h-12 flex items-center justify-center mr-4">
-                    <span class="orbitron text-xl font-bold">PE</span>
-                </div>
-                <span class="orbitron text-xl font-semibold">Project Encryptic</span>
-            </div>
-            <ul class="hidden md:flex space-x-8">
-                <li><a href="index.html" class="text-purple-400 font-semibold">Home</a></li>
-                <li><a href="about.html" class="hover:text-purple-400 transition duration-300">About</a></li>
-                <li><a href="features.html" class="hover:text-purple-400 transition duration-300">Features</a></li>
-                <li><a href="contact.html" class="hover:text-purple-400 transition duration-300">Contact</a></li>
-                <li>
-                    <a href="download.html" class="bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded-full transition duration-300">Download</a>
-                </li>
-            </ul>
-            <button class="md:hidden text-white focus:outline-none">
-                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                </svg>
-            </button>
+<body>
+    <div class="background"></div>
+    <div class="stars" id="stars"></div>
+    <div class="container">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBmaWxsPSIjYjM4OGZmIiBkPSJNNTAgMEwyMCA1MCAyMCAxMDAgNTAgNTAgODAgMTAwIDgwIDUweiIvPjx0ZXh0IHg9IjUwIiB5PSI2NSIgZ29udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjMwIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+UEU8L3RleHQ+PC9zdmc+" alt="Project Encryptic Logo" class="logo">
+        <h1>Project Encryptic</h1>
+        <p>Experience the ultimate FREE Gorilla Tag mod menu. Elevate your gameplay to unprecedented heights with our cutting-edge features and seamless integration.</p>
+        <div class="buttons">
+            <a href="https://github.com/Longno12/MenuDownload/releases/download/game/Project.Encryptic.dll" class="btn download-btn">
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    Download Now
+                </span>
+            </a>
+            <a href="https://www.youtube.com/channel/UCWP4MvMM8lPpZecj4soVn2Q" class="btn youtube-btn" target="_blank" rel="noopener noreferrer">
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                    YouTube
+                </span>
+            </a>
+            <a href="https://discord.com/invite/rHAraREyCr" class="btn discord-btn" target="_blank" rel="noopener noreferrer">
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                    Discord
+                </span>
+            </a>
         </div>
-    </nav>
+    </div>
 
-    <main class="flex-grow flex items-center justify-center px-6 pt-20">
-        <div class="max-w-4xl mx-auto text-center">
-            <div class="mb-12 relative">
-                <div class="hexagon bg-purple-600 w-48 h-48 mx-auto flex items-center justify-center">
-                    <span class="orbitron text-6xl font-bold glow">PE</span>
-                </div>
-            </div>
-            <h1 class="orbitron text-5xl md:text-7xl font-bold mb-6 glow">Project Encryptic</h1>
-            <p class="text-xl mb-12 text-purple-200">
-                Experience the ultimate <span class="font-bold">FREE</span> Gorilla Tag mod menu. Elevate your gameplay to new heights.
-            </p>
-            <div class="space-y-8">
-                <a 
-                    href="about.html" 
-                    class="action-button inline-block py-4 px-12 text-lg font-semibold text-white rounded-full shadow-lg transform hover:scale-105 transition duration-300"
-                >
-                    Discover More
-                </a>
-                <a 
-                    href="https://discord.gg/rHAraREyCr" 
-                    class="action-button inline-block py-4 px-12 text-lg font-semibold text-white rounded-full shadow-lg transform hover:scale-105 transition duration-300 ml-4"
-                    aria-label="Join our Discord"
-                >
-                    Join Discord
-                </a>
-            </div>
-            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-purple-900 bg-opacity-50 p-6 rounded-lg">
-                    <h3 class="orbitron text-xl font-semibold mb-2">Cutting-Edge Features</h3>
-                    <p>Access a vast array of mods and customizations to enhance your Gorilla Tag experience.</p>
-                </div>
-                <div class="bg-purple-900 bg-opacity-50 p-6 rounded-lg">
-                    <h3 class="orbitron text-xl font-semibold mb-2">Free</h3>
-                    <p>Enjoy premium features without any cost. Our commitment to the community keeps it free.</p>
-                </div>
-                <div class="bg-purple-900 bg-opacity-50 p-6 rounded-lg">
-                    <h3 class="orbitron text-xl font-semibold mb-2">Community</h3>
-                    <p>Join our Discord community for support, updates, and to connect with fellow modders.</p>
-                </div>
-            </div>
-        </div>
-    </main>
+    <div class="about-section">
+        <h2>About Project Encryptic</h2>
+        <p><strong>Why Free?</strong><br>
+        At Project Encryptic, we believe in democratizing access to gaming enhancements. Our mission is to provide a high-quality, feature-rich mod menu for Gorilla Tag without any cost barriers. We're committed to fostering a community where all players can enjoy an enhanced gaming experience, regardless of their financial situation.</p>
+        
+        <p>By offering our mod menu for free, we ensure that every Gorilla Tag enthusiast can explore, experiment, and elevate their gameplay. This approach not only grows our community but also drives us to continually improve and innovate based on user feedback and needs.</p>
 
-    <footer class="bg-black bg-opacity-50 py-6 mt-12">
-        <div class="container mx-auto px-6 text-center text-purple-300">
-            <p>&copy; 2024 Project Encryptic. Elevate Your Gorilla Tag Experience.</p>
-        </div>
-    </footer>
+        <h2>Why Choose This Free Menu?</h2>
+        <p>Project Encryptic stands out among free mod menus due to its comprehensive features, seamless integration, and our commitment to continuous improvement. We offer:</p>
+        <ul class="feature-list">
+            <li>Over 400 mods and customization options</li>
+            <li>Regular updates and new feature releases</li>
+            <li>A stable and optimized performance</li>
+            <li>An active and supportive community</li>
+            <li>Compatibility with the latest Gorilla Tag versions</li>
+        </ul>
+        <p>By choosing Project Encryptic, you're not just getting a mod menu; you're joining a movement dedicated to enhancing the Gorilla Tag experience for everyone.</p>
 
-    <script src="js/script.js"></script>
+        <h2>Your Choice, Your Benefit</h2>
+        <p>With Project Encryptic, users gain access to a vast array of 400+ mods, allowing for unprecedented levels of gameplay customization and enhancement. This extensive range of options means:</p>
+        <ul class="feature-list">
+            <li>Personalized gaming experiences tailored to individual preferences</li>
+            <li>Opportunities to discover new ways to enjoy Gorilla Tag</li>
+            <li>Ability to keep your gameplay fresh and exciting with regular updates</li>
+            <li>Chance to push the boundaries of what's possible in the game</li>
+        </ul>
+        <p>By choosing Project Encryptic, you're empowering yourself to take control of your Gorilla Tag experience, unlocking new potentials and ensuring endless hours of enhanced gameplay.</p>
+    </div>
+
+    <div class="scroll-down">↓</div>
+
+    <script>
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const starCount = 200;
+
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+
+                const size = Math.random() * 2;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+
+                const duration = 3 + Math.random() * 7;
+                star.style.setProperty('--duration', `${duration}s`);
+
+                starsContainer.appendChild(star);
+            }
+        }
+
+        function smoothScroll(target) {
+            const element = document.querySelector(target);
+            window.scrollTo({
+                top: element.offsetTop,
+                behavior: 'smooth'
+            });
+        }
+
+        document.querySelector('.scroll-down').addEventListener('click', () => {
+            smoothScroll('.about-section');
+        });
+
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.feature-list li');
+            elements.forEach((element, index) => {
+                element.style.animationDelay = `${index * 0.1}s`;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementBottom = element.getBoundingClientRect().bottom;
+                if (elementTop < window.innerHeight && elementBottom > 0) {
+                    element.style.animationPlayState = 'running';
+                }
+            });
+        }
+
+        window.addEventListener('scroll', animateOnScroll);
+        createStars();
+        animateOnScroll(); // Initial call
+    </script>
 </body>
 </html>
 
