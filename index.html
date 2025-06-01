@@ -3,15 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Encryptic - Ultimate Gorilla Tag Mod Menu</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Encryptic Mod Hub | Premium Game Enhancements</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Kanit:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #b388ff;
-            --primary-dark: #7c4dff;
-            --background: #0f0f1a;
-            --text: #ffffff;
-            --accent: #00ffff;
+            --primary: #7b2cbf;
+            --primary-light: #9d4edd;
+            --secondary: #ff9e00;
+            --accent: #00f5d4;
+            --dark: #10002b;
+            --darker: #0a0118;
+            --card-bg: rgba(30, 30, 46, 0.5);
+            --text: #e0e0e0;
+            --text-light: #ffffff;
+            --danger: #ff3860;
+            --warning: #ffd166;
+            --success: #06d6a0;
         }
 
         * {
@@ -21,419 +29,523 @@
         }
 
         body {
-            background-color: var(--background);
+            background-color: var(--darker);
             color: var(--text);
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Kanit', sans-serif;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
             overflow-x: hidden;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .cosmic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: radial-gradient(ellipse at bottom, var(--darker) 0%, var(--dark) 100%);
+            overflow: hidden;
+        }
+
+        .stars, .twinkling {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .stars {
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="10" cy="10" r="0.5" fill="white"/><circle cx="20" cy="20" r="0.3" fill="white"/><circle cx="30" cy="30" r="0.6" fill="white"/><circle cx="40" cy="40" r="0.4" fill="white"/><circle cx="50" cy="50" r="0.5" fill="white"/><circle cx="60" cy="60" r="0.3" fill="white"/><circle cx="70" cy="70" r="0.7" fill="white"/><circle cx="80" cy="80" r="0.2" fill="white"/><circle cx="90" cy="90" r="0.5" fill="white"/></svg>') repeat;
+            z-index: -1;
+            animation: moveStars 200s linear infinite;
+        }
+
+        .twinkling {
+            background: transparent;
+            z-index: -1;
+            animation: twinkle 4s ease-in-out infinite alternate;
+        }
+
+        .nebula {
+            position: fixed;
+            width: 200vw;
+            height: 200vh;
+            top: -50vh;
+            left: -50vw;
+            background: 
+                radial-gradient(circle at 30% 30%, rgba(123, 44, 191, 0.15) 0%, transparent 30%),
+                radial-gradient(circle at 70% 70%, rgba(0, 245, 212, 0.1) 0%, transparent 30%),
+                radial-gradient(circle at 50% 20%, rgba(255, 158, 0, 0.1) 0%, transparent 30%);
+            z-index: -1;
+            animation: rotateNebula 120s linear infinite;
         }
 
         .container {
-            text-align: center;
-            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
             padding: 2rem;
-            background: rgba(15, 15, 26, 0.8);
-            border-radius: 20px;
-            box-shadow: 0 0 20px rgba(179, 136, 255, 0.3);
-            backdrop-filter: blur(10px);
-            max-width: 90%;
-            width: 800px;
-            margin: 2rem 0;
-            animation: fadeIn 1s ease-out;
+            position: relative;
+            z-index: 1;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .hero {
+            text-align: center;
+            padding: 4rem 1rem;
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        .logo-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
         }
 
         .logo {
             width: 180px;
             height: 180px;
-            margin-bottom: 2rem;
-            animation: float 3s ease-in-out infinite, rotate 20s linear infinite;
+            filter: drop-shadow(0 0 15px rgba(123, 44, 191, 0.7));
+            animation: float 6s ease-in-out infinite;
+            z-index: 2;
+            position: relative;
         }
 
-        .logo:hover {
-            animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
-            transform: translate3d(0, 0, 0);
-            backface-visibility: hidden;
-            perspective: 1000px;
+        .logo-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(123, 44, 191, 0.4) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulse 4s ease-in-out infinite;
+            z-index: 1;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-10px) rotate(5deg); }
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        @keyframes shake {
-            10%, 90% { transform: translate3d(-1px, 0, 0); }
-            20%, 80% { transform: translate3d(2px, 0, 0); }
-            30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
-            40%, 60% { transform: translate3d(4px, 0, 0); }
-        }
-
-        h1, h2 {
+        .hero-title {
             font-family: 'Orbitron', sans-serif;
+            font-size: 4.5rem;
             margin-bottom: 1rem;
-            background: linear-gradient(45deg, var(--primary), var(--accent));
+            background: linear-gradient(45deg, var(--primary), var(--accent), var(--secondary));
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
             color: transparent;
+            text-shadow: 0 0 20px rgba(123, 44, 191, 0.3);
+            letter-spacing: 2px;
+            line-height: 1.1;
         }
 
-        h1 { 
-            font-size: 3.5rem; 
-            overflow: hidden;
-            white-space: nowrap;
-            animation: typing 3.5s steps(40, end), colorShift 8s ease-in-out infinite;
-        }
-        h2 { font-size: 2rem; }
-
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
+        .hero-subtitle {
+            font-size: 1.5rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
         }
 
-        @keyframes colorShift {
-            0%, 100% { filter: hue-rotate(0deg); }
-            50% { filter: hue-rotate(30deg); }
+        .mods-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
         }
 
-        p {
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto 1.5rem;
-            line-height: 1.6;
-            color: #a0a0a0;
-        }
-
-        .buttons {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            background: linear-gradient(45deg, var(--primary), var(--primary-dark));
-            color: white;
-            text-decoration: none;
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
+        .mod-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2.5rem;
             position: relative;
             overflow: hidden;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            animation: glowPulse 3s infinite;
-        }
-
-        @keyframes glowPulse {
-            0%, 100% { box-shadow: 0 0 5px var(--primary), 0 0 10px var(--primary); }
-            50% { box-shadow: 0 0 20px var(--primary), 0 0 30px var(--accent); }
-        }
-
-        .btn:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn:active {
-            transform: translateY(-1px) scale(1.02);
-        }
-
-        .btn::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, var(--primary), var(--accent));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .btn:hover::before {
-            opacity: 1;
-        }
-
-        .btn span {
-            position: relative;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(123, 44, 191, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             z-index: 1;
         }
 
-        .background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(-45deg, #1a1b26, #2f3147, #1a1b26, #3f4167);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
-            z-index: -2;
-        }
-
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .stars {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+        .mod-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(123, 44, 191, 0.1) 0%, transparent 70%);
             z-index: -1;
-            overflow: hidden;
-            perspective: 1000px;
-            transform-style: preserve-3d;
-        }
-
-        .star {
-            position: absolute;
-            background: #ffffff;
-            border-radius: 50%;
-            animation: twinkle var(--duration) linear infinite, parallax 5s ease-out infinite;
             opacity: 0;
+            transition: opacity 0.4s;
         }
 
-        @keyframes twinkle {
-            0%, 100% { opacity: 0; }
-            50% { opacity: 1; }
+        .mod-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(123, 44, 191, 0.4);
         }
 
-        @keyframes parallax {
-            0% { transform: translateZ(0); }
-            50% { transform: translateZ(50px); }
-            100% { transform: translateZ(0); }
+        .mod-card:hover::before {
+            opacity: 1;
         }
 
-        .about-section {
-            background: rgba(15, 15, 26, 0.9);
-            padding: 2rem;
-            border-radius: 20px;
+        .mod-card.gtag-card {
+            background: linear-gradient(135deg, rgba(30, 30, 46, 0.7) 0%, rgba(62, 12, 109, 0.3) 100%);
+        }
+
+        .mod-card.repo-card {
+            background: linear-gradient(135deg, rgba(30, 30, 46, 0.7) 0%, rgba(109, 12, 42, 0.3) 100%);
+        }
+
+        .mod-card.clicker-card {
+            background: linear-gradient(135deg, rgba(30, 30, 46, 0.7) 0%, rgba(12, 73, 109, 0.3) 100%);
+        }
+
+        .mod-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .mod-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        .mod-badge {
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .badge-popular {
+            background: linear-gradient(45deg, var(--primary), var(--primary-light));
+            color: white;
+        }
+
+        .badge-new {
+            background: linear-gradient(45deg, var(--accent), #00b7a1);
+            color: var(--dark);
+        }
+
+        .badge-soon {
+            background: linear-gradient(45deg, var(--warning), #ffb700);
+            color: var(--dark);
+        }
+
+        .mod-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .mod-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            width: 100%;
             margin-top: 2rem;
-            box-shadow: 0 0 20px rgba(179, 136, 255, 0.3);
-            animation: slideIn 1s ease-out;
-        }
-
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(-20px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        .feature-list {
-            text-align: left;
-            list-style-type: none;
-            padding-left: 1rem;
-        }
-
-        .feature-list li {
-            margin-bottom: 0.5rem;
             position: relative;
-            padding-left: 1.5rem;
-            opacity: 0;
-            animation: fadeInUp 0.5s ease-out forwards paused;
+            overflow: hidden;
+            z-index: 1;
         }
 
-        .feature-list li::before {
-            content: '✦';
+        .mod-btn::before {
+            content: '';
             position: absolute;
+            top: 0;
             left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 0%, rgba(255, 255, 255, 0.1) 100%);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .mod-btn:hover::before {
+            opacity: 1;
+        }
+
+        .mod-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .mod-btn:active {
+            transform: translateY(0);
+        }
+
+        .gtag-btn {
+            background: linear-gradient(45deg, var(--primary), var(--primary-light));
+            color: white;
+            box-shadow: 0 5px 15px rgba(123, 44, 191, 0.4);
+        }
+
+        .repo-btn {
+            background: linear-gradient(45deg, #d90452, var(--danger));
+            color: white;
+            box-shadow: 0 5px 15px rgba(255, 56, 96, 0.4);
+        }
+
+        .clicker-btn {
+            background: linear-gradient(45deg, #118ab2, #073b4c);
+            color: white;
+            box-shadow: 0 5px 15px rgba(6, 214, 160, 0.2);
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .btn-icon {
+            margin-right: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 3rem 1rem;
+            margin-top: 5rem;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            max-width: 800px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, rgba(123, 44, 191, 0.5) 50%, transparent 100%);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .social-link {
+            color: var(--text);
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
             color: var(--primary);
-            animation: pulse 2s infinite;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+    
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
         }
 
         @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.4; }
+            50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.2; }
         }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes moveStars {
+            from { background-position: 0 0; }
+            to { background-position: -10000px 5000px; }
         }
 
-        .scroll-down {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: var(--primary);
-            font-size: 2rem;
-            animation: bounce 2s infinite;
-            cursor: pointer;
+        @keyframes twinkle {
+            0% { opacity: 0.2; }
+            100% { opacity: 1; }
         }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
-            40% { transform: translateY(-20px) translateX(-50%); }
-            60% { transform: translateY(-10px) translateX(-50%); }
+        @keyframes rotateNebula {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
         }
 
         @media (max-width: 768px) {
-            .container, .about-section {
-                padding: 1.5rem;
+            .hero {
+                padding: 3rem 1rem;
             }
-
-            h1 { font-size: 2.5rem; }
-            h2 { font-size: 1.8rem; }
-
+            
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .mods-grid {
+                grid-template-columns: 1fr;
+            }
+            
             .logo {
                 width: 140px;
                 height: 140px;
             }
+        }
 
-            p {
-                font-size: 1rem;
-            }
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }   
 
-            .buttons {
-                flex-direction: column;
-                align-items: center;
-            }
+            .mod-card {
+                padding: 1.5rem;
+            }  
 
-            .btn {
-                width: 100%;
-                max-width: 250px;
+            .mod-title {
+                font-size: 1.5rem;
             }
         }
     </style>
 </head>
+
 <body>
-    <div class="background"></div>
-    <div class="stars" id="stars"></div>
+    <div class="cosmic-bg">
+        <div class="stars"></div>
+        <div class="twinkling"></div>
+        <div class="nebula"></div>
+    </div>
+
     <div class="container">
-        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBmaWxsPSIjYjM4OGZmIiBkPSJNNTAgMEwyMCA1MCAyMCAxMDAgNTAgNTAgODAgMTAwIDgwIDUweiIvPjx0ZXh0IHg9IjUwIiB5PSI2NSIgZ29udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjMwIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+UEU8L3RleHQ+PC9zdmc+" alt="Project Encryptic Logo" class="logo">
-        <h1>Project Encryptic</h1>
-        <p>Experience the ultimate FREE Gorilla Tag mod menu. Elevate your gameplay to unprecedented heights with our cutting-edge features and seamless integration.</p>
-        <div class="buttons">
-            <a href="https://github.com/Longno12/MenuDownload/releases/download/game/Project.Encryptic.dll" class="btn download-btn">
-                <span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        <section class="hero">
+            <div class="logo-container">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBmaWxsPSIjYjM4OGZmIiBkPSJNNTAgMEwyMCA1MCAyMCAxMDAgNTAgNTAgODAgMTAwIDgwIDUweiIvPjx0ZXh0IHg9IjUwIiB5PSI2NSIgZ29udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjMwIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+UEU8L3RleHQ+PC9zdmc+" alt="Encryptic Mod Hub" class="logo">
+                <div class="logo-glow"></div>
+            </div>
+            <h1 class="hero-title">Encryptic MOD HUB</h1>
+            <p class="hero-subtitle">Premium game enhancements with cutting-edge technology and uncompromising performance</p>
+        </section>
+
+        <div class="mods-grid">
+            <div class="mod-card gtag-card">
+                <div class="mod-header">
+                    <h2 class="mod-title">Gorilla Tag Cheat</h2>
+                    <span class="mod-badge badge-popular">Most Popular</span>
+                </div>
+                <i class="fas fa-gamepad mod-icon"></i>
+                <button class="mod-btn gtag-btn" id="gtagBtn">
+                    <i class="fas fa-download btn-icon"></i>
                     Download Now
-                </span>
-            </a>
-            <a href="https://www.youtube.com/channel/UCWP4MvMM8lPpZecj4soVn2Q" class="btn youtube-btn" target="_blank" rel="noopener noreferrer">
-                <span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
-                    YouTube
-                </span>
-            </a>
-            <a href="https://discord.com/invite/rHAraREyCr" class="btn discord-btn" target="_blank" rel="noopener noreferrer">
-                <span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-                    Discord
-                </span>
-            </a>
+                </button>
+            </div>
+
+            <div class="mod-card repo-card">
+                <div class="mod-header">
+                    <h2 class="mod-title">R.E.P.O Cheat</h2>
+                    <span class="mod-badge badge-new">New Version</span>
+                </div>
+                <i class="fas fa-rocket mod-icon"></i>
+                <button class="mod-btn repo-btn" id="repoBtn">
+                    <i class="fas fa-download btn-icon"></i>
+                    Download Now
+                </button>
+            </div>
+
+            <div class="mod-card clicker-card">
+                <div class="mod-header">
+                    <h2 class="mod-title">Clicker Heroes Cheat</h2>
+                    <span class="mod-badge badge-soon">Coming Soon</span>
+                </div>
+                <i class="fas fa-clock mod-icon"></i>
+                <button class="mod-btn clicker-btn" disabled>
+                    <i class="fas fa-hourglass-half btn-icon"></i>
+                    In Development
+                </button>
+            </div>
         </div>
     </div>
 
-    <div class="about-section">
-        <h2>About Project Encryptic</h2>
-        <p><strong>Why Free?</strong><br>
-        At Project Encryptic, we believe in democratizing access to gaming enhancements. Our mission is to provide a high-quality, feature-rich mod menu for Gorilla Tag without any cost barriers. We're committed to fostering a community where all players can enjoy an enhanced gaming experience, regardless of their financial situation.</p>
-        
-        <p>By offering our mod menu for free, we ensure that every Gorilla Tag enthusiast can explore, experiment, and elevate their gameplay. This approach not only grows our community but also drives us to continually improve and innovate based on user feedback and needs.</p>
-
-        <h2>Why Choose This Free Menu?</h2>
-        <p>Project Encryptic stands out among free mod menus due to its comprehensive features, seamless integration, and our commitment to continuous improvement. We offer:</p>
-        <ul class="feature-list">
-            <li>Over 400 mods and customization options</li>
-            <li>Regular updates and new feature releases</li>
-            <li>A stable and optimized performance</li>
-            <li>An active and supportive community</li>
-            <li>Compatibility with the latest Gorilla Tag versions</li>
-        </ul>
-        <p>By choosing Project Encryptic, you're not just getting a mod menu; you're joining a movement dedicated to enhancing the Gorilla Tag experience for everyone.</p>
-
-        <h2>Your Choice, Your Benefit</h2>
-        <p>With Project Encryptic, users gain access to a vast array of 400+ mods, allowing for unprecedented levels of gameplay customization and enhancement. This extensive range of options means:</p>
-        <ul class="feature-list">
-            <li>Personalized gaming experiences tailored to individual preferences</li>
-            <li>Opportunities to discover new ways to enjoy Gorilla Tag</li>
-            <li>Ability to keep your gameplay fresh and exciting with regular updates</li>
-            <li>Chance to push the boundaries of what's possible in the game</li>
-        </ul>
-        <p>By choosing Project Encryptic, you're empowering yourself to take control of your Gorilla Tag experience, unlocking new potentials and ensuring endless hours of enhanced gameplay.</p>
-    </div>
-
-    <div class="scroll-down">↓</div>
+    <footer class="footer">
+        <div class="social-links">
+            <a href="https://www.youtube.com/channel/UCWP4MvMM8lPpZecj4soVn2Q" class="social-link" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://discord.com/invite/rHAraREyCr" class="social-link" target="_blank"><i class="fab fa-discord"></i></a>
+            <a href="https://github.com/Longno12" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+        <p class="copyright">© 2025 Encryptic Mod Hub. All rights reserved.</p>
+    </footer>
 
     <script>
-        function createStars() {
-            const starsContainer = document.getElementById('stars');
-            const starCount = 200;
-
+        document.addEventListener('DOMContentLoaded', function() {
+            const starsContainer = document.querySelector('.stars');
+            const starCount = 200;    
             for (let i = 0; i < starCount; i++) {
                 const star = document.createElement('div');
-                star.classList.add('star');
-
-                const size = Math.random() * 2;
-                star.style.width = `${size}px`;
-                star.style.height = `${size}px`;
-
-                star.style.left = `${Math.random() * 100}%`;
-                star.style.top = `${Math.random() * 100}%`;
-
-                const duration = 3 + Math.random() * 7;
-                star.style.setProperty('--duration', `${duration}s`);
-
-                starsContainer.appendChild(star);
+                star.style.position = 'absolute';
+                star.style.width = Math.random() * 3 + 'px';
+                star.style.height = star.style.width;
+                star.style.backgroundColor = 'white';
+                star.style.borderRadius = '50%';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.opacity = '0';
+                star.style.boxShadow = '0 0 5px 1px rgba(255,255,255,0.5)';         
+                const duration = 5 + Math.random() * 15;
+                const delay = Math.random() * 10;
+                star.style.animation = `twinkle ${duration}s ease-in-out ${delay}s infinite alternate`;     
+                starsContainer.appendChild(star);           
+                setTimeout(() => {
+                    star.style.opacity = '0.8';
+                }, delay * 1000);
             }
-        }
 
-        function smoothScroll(target) {
-            const element = document.querySelector(target);
-            window.scrollTo({
-                top: element.offsetTop,
-                behavior: 'smooth'
+            document.getElementById('gtagBtn').addEventListener('click', function() {
+                this.innerHTML = '<i class="fas fa-spinner fa-spin btn-icon"></i> Downloading...';
+                setTimeout(() => {
+                    window.location.href = 'https://github.com/Longno12/MenuDownload/releases/download/game/Project.Encryptic.dll';
+                }, 1500);
             });
-        }
 
-        document.querySelector('.scroll-down').addEventListener('click', () => {
-            smoothScroll('.about-section');
+            document.getElementById('repoBtn').addEventListener('click', function() {
+                this.innerHTML = '<i class="fas fa-spinner fa-spin btn-icon"></i> Downloading...';
+                setTimeout(() => {
+                    window.location.href = 'https://github.com/Longno12/R.E.P.O-MOD/releases/download/R.E.P.O/R.E.P.O.CHEAT.rar';
+                }, 1500);
+            });
+
+            window.addEventListener('mousemove', function(e) {
+                const nebula = document.querySelector('.nebula');
+                const x = e.clientX / window.innerWidth;
+                const y = e.clientY / window.innerHeight;
+                nebula.style.transform = `rotate(${x * 10}deg) translate(${x * 20}px, ${y * 20}px)`;
+            });
         });
-
-        function animateOnScroll() {
-            const elements = document.querySelectorAll('.feature-list li');
-            elements.forEach((element, index) => {
-                element.style.animationDelay = `${index * 0.1}s`;
-                const elementTop = element.getBoundingClientRect().top;
-                const elementBottom = element.getBoundingClientRect().bottom;
-                if (elementTop < window.innerHeight && elementBottom > 0) {
-                    element.style.animationPlayState = 'running';
-                }
-            });
-        }
-
-        window.addEventListener('scroll', animateOnScroll);
-        createStars();
-        animateOnScroll(); // Initial call
     </script>
 </body>
 </html>
-
